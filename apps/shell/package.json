@@ -1,0 +1,39 @@
+{
+  "name": "ruas-vivas",
+  "version": "0.0.1",
+  "description": "Aqui você encontra minhas expedições, projetos e ferramentas para enxergar o Brasil de perto.",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gothd/gothd.git"
+  },
+  "keywords": [
+    "portfolio",
+    "diario",
+    "plataforma"
+  ],
+  "author": "gothd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gothd/gothd/issues"
+  },
+  "homepage": "https://github.com/gothd/gothd#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "next": "^15.5.4",
+    "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.2",
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
