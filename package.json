@@ -1,0 +1,43 @@
+{
+  "name": "gothd",
+  "version": "0.0.1",
+  "description": "⋆｡ﾟ☁︎｡⋆｡ ﾟ｡⋆ (°□°) ☝️ ⋆｡ﾟ☁︎｡⋆｡ ﾟ☾ ﾟ｡⋆",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "validate:frontmatter": "ts-node --esm apps/shell/scripts/validate-frontmatter.mts",
+    "build": "npm run validate:frontmatter && next build"
+  },
+  "lint-staged": {
+    "apps/shell/conteudo/**/*.mdx": [
+      "ts-node --esm apps/shell/scripts/validate-frontmatter.mts"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gothd/gothd.git"
+  },
+  "keywords": [
+    "monorepo",
+    "platform",
+    "open-source",
+    "portfolio",
+    "diario",
+    "plataforma"
+  ],
+  "author": "gothd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gothd/gothd/issues"
+  },
+  "homepage": "https://github.com/gothd/gothd#readme",
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

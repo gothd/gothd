@@ -29,7 +29,8 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "scripts/validate-frontmatter.mts"
   ],
   "exclude": [
     "node_modules"
