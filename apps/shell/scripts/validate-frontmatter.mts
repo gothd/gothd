@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 
 // Diretórios a validar
 const CONTENT_DIRS = [
-  path.join(process.cwd(), 'apps/shell/conteudo/expedicoes'),
+  path.join(process.cwd(), 'apps/shell/conteudo/expedicoes'), // deve ser somente executado do ROOT
   path.join(process.cwd(), 'apps/shell/conteudo/cidades'),
   path.join(process.cwd(), 'apps/shell/conteudo/projetos')
 ]

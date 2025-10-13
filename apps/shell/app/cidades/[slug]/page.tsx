@@ -16,21 +16,27 @@ export async function generateMetadata ({
   if (!file) return {}
 
   const { data } = file
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gothd.vercel.app' // ajuste para o domínio real
+  const url = `${baseUrl}/cidades/${slug}`
 
   return {
     title: data.titulo ?? 'Cidade',
     description: data.resumo ?? `Informações sobre ${data.titulo ?? 'cidade'}.`,
+    alternates: {
+      canonical: url // 🔑 link rel="canonical"
+    },
     openGraph: {
       title: data.titulo,
       description: data.resumo,
-      images: data.imagem ? [{ url: data.imagem }] : [],
+      url, // 🔑 URL absoluta
+      images: data.imagem ? [{ url: `${baseUrl}${data.imagem}` }] : [],
       type: 'article'
     },
     twitter: {
       card: 'summary_large_image',
       title: data.titulo,
       description: data.resumo,
-      images: data.imagem ? [data.imagem] : []
+      images: data.imagem ? [`${baseUrl}${data.imagem}`] : []
     }
   }
 }

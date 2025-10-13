@@ -16,6 +16,8 @@ export async function generateMetadata ({
   if (!file) return {}
 
   const { data } = file
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gothd.vercel.app' // ajuste para o domínio real
+  const url = `${baseUrl}/projetos/${slug}`
 
   return {
     title: data.titulo ?? 'Projeto',
@@ -23,17 +25,21 @@ export async function generateMetadata ({
       data.resumo ??
       data.descricao ??
       `Detalhes do projeto ${data.titulo ?? ''}.`,
+    alternates: {
+      canonical: url // 🔑 link rel="canonical"
+    },
     openGraph: {
       title: data.titulo,
       description: data.resumo ?? data.descricao,
-      images: data.imagem ? [{ url: data.imagem }] : [],
+      url, // 🔑 URL absoluta
+      images: data.imagem ? [{ url: `${baseUrl}${data.imagem}` }] : [],
       type: 'article'
     },
     twitter: {
       card: 'summary_large_image',
       title: data.titulo,
       description: data.resumo ?? data.descricao,
-      images: data.imagem ? [data.imagem] : []
+      images: data.imagem ? [`${baseUrl}${data.imagem}`] : []
     }
   }
 }

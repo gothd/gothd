@@ -5,8 +5,8 @@
   "types": "index.ts",
   "private": true,
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "typescript": "5.9.3",

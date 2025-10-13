@@ -2,11 +2,16 @@
   "name": "gothd",
   "version": "0.0.1",
   "description": "⋆｡ﾟ☁︎｡⋆｡ ﾟ｡⋆ (°□°) ☝️ ⋆｡ﾟ☁︎｡⋆｡ ﾟ☾ ﾟ｡⋆",
-  "main": "index.js",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "private": true,
   "scripts": {
     "prepare": "husky",
     "validate:frontmatter": "ts-node --esm apps/shell/scripts/validate-frontmatter.mts",
-    "build": "npm run validate:frontmatter && next build"
+    "dev:shell": "npm run dev --workspace=shell",
+    "build:shell": "npm run validate:frontmatter && npm run build --workspace=shell"
   },
   "lint-staged": {
     "apps/shell/conteudo/**/*.mdx": [
@@ -32,7 +37,10 @@
   },
   "homepage": "https://github.com/gothd/gothd#readme",
   "dependencies": {
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "next": "^15.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "husky": "^9.1.7",

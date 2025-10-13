@@ -1,10 +1,11 @@
 {
-  "name": "ruas-vivas",
+  "name": "shell",
   "version": "0.1.2",
   "description": "Aqui você encontra minhas expedições, projetos e ferramentas para enxergar o Brasil de perto.",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run validate:frontmatter && next build",
+    "validate:frontmatter": "ts-node --esm scripts/validate-frontmatter.mts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@types/node": "24.7.2",
     "@types/react": "19.2.2",
+    "ts-node": "^10.9.2",
     "typescript": "5.9.3"
   }
 }

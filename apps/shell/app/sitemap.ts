@@ -3,7 +3,7 @@ import { getAllContent } from '../lib/mdx'
 import { EXPEDITIONS_PATH, CITIES_PATH, PROJECTS_PATH } from '../lib/paths'
 
 export default function sitemap (): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.seusite.com' // ajuste para o domínio real
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gothd.vercel.app' // ajuste para o domínio real
 
   const expeditions = getAllContent(EXPEDITIONS_PATH).map(({ slug, data }) => ({
     url: `${baseUrl}/expedicoes/${slug}`,
