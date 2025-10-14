@@ -11,13 +11,11 @@ export default function handler (
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res
-    .status(200)
-    .json({
-      name: 'Göst',
-      description: 'Eu sou um gatinho, e durmo na roupa do chefe.',
-      imageUrl: `${
-        process.env.VERCEL_URL ?? 'http://localhost:3000'
-      }/20251014.jpg`
-    })
+  res.status(200).json({
+    name: 'Göst',
+    description: 'Eu sou um gatinho, e durmo na roupa do chefe.',
+    imageUrl: `${
+      process.env.NEXT_PUBLIC_VERCEL_URL ?? 'http://localhost:3000'
+    }/20251014.jpg`
+  })
 }
