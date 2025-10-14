@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npm run validate:frontmatter && next build",
-    "validate:frontmatter": "ts-node --esm scripts/validate-frontmatter.mts",
+    "validate:frontmatter": "ts-node -P tsconfig.node.json --esm scripts/validate-frontmatter.mts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -15,6 +15,7 @@
     "gray-matter": "^4.0.3",
     "next": "^15.5.4",
     "next-mdx-remote": "^5.0.0",
+    "next-transpile-modules": "^10.0.1",
     "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

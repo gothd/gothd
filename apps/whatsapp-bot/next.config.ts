@@ -1,5 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const withTM = require('next-transpile-modules')([
+  '@ruasvivas/lib' // garante que o Next transpile esse pacote
+])
+
+const nextConfig = withTM({
   // Desabilita a geração de páginas estáticas/SSR
   // Mantém apenas as rotas de API
   experimental: {
@@ -9,6 +12,6 @@ const nextConfig = {
   reactStrictMode: false,
   // Opcional: remove a saída de páginas
   output: 'standalone'
-}
+})
 
 module.exports = nextConfig

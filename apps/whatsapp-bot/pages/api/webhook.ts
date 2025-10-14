@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { PLATFORM_NAME, PROJECT_NAME } from '@ruasvivas/lib'
 
 export default async function handler (
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // 1. Validação inicial do webhook (Meta → Vercel)
   if (req.method === 'GET') {
     const verifyToken = process.env.WHATSAPP_VERIFY_TOKEN
     const mode = req.query['hub.mode']
@@ -12,13 +12,12 @@ export default async function handler (
     const challenge = req.query['hub.challenge']
 
     if (mode === 'subscribe' && token === verifyToken) {
-      return res.status(200).send(challenge) // devolve o "challenge" para validar
+      return res.status(200).send(challenge)
     } else {
-      return res.status(403).end() // se o token não bate, bloqueia
+      return res.status(403).end()
     }
   }
 
-  // 2. Quando o usuário manda mensagem (POST)
   if (req.method === 'POST') {
     const body = req.body
     const entry = body.entry?.[0]
@@ -26,11 +25,14 @@ export default async function handler (
     const message = changes?.value?.messages?.[0]
 
     if (message) {
-      const from = message.from // número do usuário
-      const text = message.text?.body?.toLowerCase() // se digitou texto
-      const buttonReply = message.button?.payload // se clicou em botão
+      const from = message.from
+      const text = message.text?.body?.toLowerCase()
+      const buttonReply = message.button?.payload
 
       console.log(`Mensagem recebida de ${from}: ${text || buttonReply}`)
+
+      const siteUrl =
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'
 
       // --- MENU INICIAL ---
       if (
@@ -38,10 +40,10 @@ export default async function handler (
         (text.includes('oi') || text.includes('olá') || text.includes('ola'))
       ) {
         await sendInteractive(from, {
-          text: 'Olá 👋, eu sou o Göst, assistente da GothD 💜\nPosso te ajudar em duas frentes:',
+          text: `Olá 👋, eu sou o Göst, assistente da ${PLATFORM_NAME} 💜\nPosso te ajudar em duas frentes:`,
           buttons: [
             { id: 'criar_site', title: '🌐 Criar site' },
-            { id: 'ruas_vivas', title: '🌱 Ruas Vivas' }
+            { id: 'ruas_vivas', title: `🌱 ${PROJECT_NAME}` }
           ]
         })
       }
@@ -49,9 +51,8 @@ export default async function handler (
       // --- SUBMENU CRIAR SITE ---
       if (buttonReply === 'criar_site') {
         await sendInteractive(from, {
-          text: 'Perfeito 🚀! Eu, Göst 💜, posso te ajudar com seu site. Escolha uma opção:',
+          text: `Perfeito 🚀! Eu, Göst 💜, posso te ajudar com seu site. Escolha uma opção:`,
           buttons: [
-            { id: 'portfolio', title: '📂 Ver portfólio' },
             { id: 'precos', title: '💰 Preços e prazos' },
             { id: 'humano', title: '🙋 Falar com humano' }
           ]
@@ -61,7 +62,7 @@ export default async function handler (
       // --- SUBMENU RUAS VIVAS ---
       if (buttonReply === 'ruas_vivas') {
         await sendInteractive(from, {
-          text: 'O Ruas Vivas 🌱 é um projeto da GothD 💜. O que você gostaria de explorar?',
+          text: `O ${PROJECT_NAME} 🌱 é um projeto da ${PLATFORM_NAME} 💜. O que você gostaria de explorar?`,
           buttons: [
             { id: 'expedicoes', title: '🗺️ Expedições' },
             { id: 'forum', title: '💬 Fórum' },
@@ -71,21 +72,12 @@ export default async function handler (
       }
 
       // --- RESPOSTAS FINAIS ---
-      // --- RESPOSTAS FINAIS ---
-
-      // Criar site → Portfólio
-      if (buttonReply === 'portfolio') {
-        await sendText(
-          from,
-          'Aqui está nosso portfólio 📂: https://gothd.com/portfolio 💜'
-        )
-      }
 
       // Criar site → Preços e prazos
       if (buttonReply === 'precos') {
         await sendText(
           from,
-          'Tabela de preços 💰:\n- Site básico: R$ 1.500\n- Site profissional: R$ 3.000\n- Prazo: 15 a 30 dias 💜'
+          `Tabela de preços 💰:\n- Site básico: R$ 1.500\n- Site profissional: R$ 3.000\n- Prazo: 15 a 30 dias 💜`
         )
       }
 
@@ -93,7 +85,7 @@ export default async function handler (
       if (buttonReply === 'humano') {
         await sendText(
           from,
-          'Beleza 🙋! Vou te conectar com alguém da equipe da GothD 💜. Pode me passar seu e-mail?'
+          `Beleza 🙋! Vou te conectar com alguém da equipe da ${PLATFORM_NAME} 💜. Pode me passar seu e-mail?`
         )
       }
 
@@ -101,34 +93,31 @@ export default async function handler (
       if (buttonReply === 'expedicoes') {
         await sendText(
           from,
-          'Confira as expedições 🗺️: https://ruasvivas.com/expedicoes 💜'
+          `Confira as expedições 🗺️: ${siteUrl}/expedicoes 💜`
         )
       }
 
       // Ruas Vivas → Fórum
       if (buttonReply === 'forum') {
-        await sendText(
-          from,
-          'Participe do fórum 💬: https://ruasvivas.com/forum 💜'
-        )
+        await sendText(from, `Participe do fórum 💬: ${siteUrl}/forum 💜`)
       }
 
       // Ruas Vivas → Novidades
       if (buttonReply === 'novidades') {
         await sendText(
           from,
-          'Você se inscreveu para receber novidades 🔔. O Göst 💜 vai te avisar sempre que houver algo novo!'
+          `Você se inscreveu para receber novidades 🔔. O Göst 💜 vai te avisar sempre que houver algo novo!`
         )
       }
     }
 
-    return res.status(200).end() // confirma recebimento ao Meta
+    return res.status(200).end()
   }
 
-  return res.status(405).end() // método não permitido
+  return res.status(405).end()
 }
 
-// --- Funções auxiliares para simplificar ---
+// --- Funções auxiliares ---
 async function sendInteractive (
   to: string,
   opts: { text: string; buttons: { id: string; title: string }[] }
