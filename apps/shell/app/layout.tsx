@@ -52,8 +52,20 @@ export default function RootLayout ({ children }) {
         </header>
         <main className='max-w-5xl mx-auto px-4 py-10'>{children}</main>
         <footer className='border-t border-gray-200 text-center py-6 text-sm text-gray-500'>
-          © {new Date().getFullYear()} <Logo type='wordmark' /> — com os pés nas
-          ruas
+          <div className='container mx-auto flex flex-col sm:flex-row justify-between items-center'>
+            <div>
+              © {new Date().getFullYear()} <Logo type='wordmark' /> — com os pés
+              nas ruas
+            </div>
+            <nav className='flex gap-4 mt-2 sm:mt-0'>
+              <Link href='/termos' className='hover:underline'>
+                Termos de Uso
+              </Link>
+              <Link href='/privacidade' className='hover:underline'>
+                Política de Privacidade
+              </Link>
+            </nav>
+          </div>
         </footer>
       </body>
     </html>

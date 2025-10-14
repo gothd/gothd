@@ -2,6 +2,9 @@
   "name": "@ruasvivas/lib",
   "version": "0.0.1",
   "main": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
   "types": "index.ts",
   "private": true,
   "devDependencies": {
