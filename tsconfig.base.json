@@ -39,5 +39,10 @@
         "packages/lib/*"
       ]
     }
-  }
+  },
+  "include": [
+    "apps",
+    "packages",
+    "./globals.d.ts"
+  ]
 }

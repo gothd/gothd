@@ -1,7 +1,9 @@
-import Logo from '../components/Logo'
+import { Logo } from '@ruasvivas/ui'
 import { Cinzel, Inter } from 'next/font/google'
-import './globals.css'
+import '@ruasvivas/assets/globals.css'
 import Link from 'next/link'
+import { PropsWithChildren } from 'react'
+import { Metadata } from 'next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,13 +16,13 @@ const cinzel = Cinzel({
   weight: ['600', '700']
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Ruas Vivas',
   description:
     'Laboratório nômade de cidades, documentando cada lugar por onde passo, transformo observações em design, dados e tecnologia.'
 }
 
-export default function RootLayout ({ children }) {
+export default function RootLayout ({ children }: PropsWithChildren) {
   return (
     <html lang='pt-BR' className={`${inter.variable} ${cinzel.variable}`}>
       <body className='font-sans antialiased'>

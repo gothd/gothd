@@ -1,0 +1,16 @@
+{
+  "name": "@ruasvivas/assets",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "types": "index.d.ts",
+  "files": [
+    "globals.css",
+    "tailwind.config.ts",
+    "globals-css.d.ts"
+  ],
+  "exports": {
+    "./globals.css": "./globals.css",
+    "./tailwind.config": "./tailwind.config.ts"
+  }
+}

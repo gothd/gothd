@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import LogoMonograma from '@ruasvivas/assets/images/monograma.png'
 
 export type Props =
