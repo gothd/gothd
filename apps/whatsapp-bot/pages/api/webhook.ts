@@ -32,7 +32,7 @@ export default async function handler (
       console.log(`Mensagem recebida de ${from}: ${text || buttonReply}`)
 
       const siteUrl =
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://gothd.vercel.app'
 
       // --- MENU INICIAL ---
       if (

@@ -1,8 +1,7 @@
 const path = require('path');
-const withMDX = require('@next/mdx')();
 
-module.exports = withMDX({
-  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   transpilePackages: ['@ruasvivas/lib'], // garante que o Next transpile esse pacote
   webpack: (config) => {
     config.resolve.alias['@ruasvivas/ui'] = path.resolve(__dirname, '../../packages/ui');
@@ -12,4 +11,6 @@ module.exports = withMDX({
   turbopack: {
     root: path.resolve(__dirname, "..", "..")
   }
-});
+}
+
+module.exports = nextConfig
