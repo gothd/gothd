@@ -37,6 +37,12 @@
       ],
       "@ruasvivas/lib/*": [
         "packages/lib/*"
+      ],
+      "@ruasvivas/config": [
+        "packages/config"
+      ],
+      "@ruasvivas/config/*": [
+        "packages/config/*"
       ]
     }
   },

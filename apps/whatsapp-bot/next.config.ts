@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import { NextConfig } from "next/types"
+
+const nextConfig: NextConfig = {
   transpilePackages: ['@ruasvivas/lib'], // garante que o Next transpile esse pacote
   // Evita warnings de React (já que não usamos React aqui)
   reactStrictMode: false,

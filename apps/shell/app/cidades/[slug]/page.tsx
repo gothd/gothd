@@ -16,7 +16,7 @@ export async function generateMetadata ({
   if (!file) return {}
 
   const { data } = file
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gothd.vercel.app' // ajuste para o domínio real
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"; // ajuste para o domínio real
   const url = `${baseUrl}/cidades/${slug}`
 
   return {

@@ -4,7 +4,7 @@ import { EXPEDITIONS_PATH, CITIES_PATH, PROJECTS_PATH } from '../lib/paths'
 import { TERMS_URL, PRIVACY_URL } from '@ruasvivas/lib'
 
 export default function sitemap (): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gothd.vercel.app' // ajuste para o domínio real
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"; // ajuste para o domínio real
 
   const expeditions: MetadataRoute.Sitemap = getAllContent(
     EXPEDITIONS_PATH

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage () {
   return (
     <section className='space-y-8'>
@@ -13,12 +15,12 @@ export default function HomePage () {
       <div className='bg-ruas-verde text-white p-6 rounded-lg shadow-md'>
         <h3 className='text-2xl font-semibold mb-2'>Última cidade visitada</h3>
         <p className='text-lg'>Várzea da Roça, Bahia</p>
-        <a
+        <Link
           href='/cidades/varzea-da-roca'
           className='mt-4 inline-block bg-white text-ruas-verde px-4 py-2 rounded hover:bg-gray-100'
         >
           Ver detalhes
-        </a>
+        </Link>
       </div>
     </section>
   )
