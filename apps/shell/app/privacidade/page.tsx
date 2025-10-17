@@ -1,4 +1,3 @@
-// apps/shell/pages/privacidade.tsx
 import { CONTACT_EMAIL, PLATFORM_NAME, PROJECT_NAME } from '@ruasvivas/lib'
 
 export default function PrivacidadePage () {
