@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { cn } from "@ruasvivas/lib/utils";
+import { cn } from "@ruasvivas/lib";
 import { FaCogs } from "react-icons/fa";
 import { apps } from "@ruasvivas/config";
 

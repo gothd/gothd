@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { cn } from "@ruasvivas/lib/utils";
+import { cn } from "@ruasvivas/lib";
 
 export default function AsideNavbar() {
   const [isCollapsed, setIsCollapsed] = useState(false);

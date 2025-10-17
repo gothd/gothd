@@ -5,14 +5,15 @@
   "types": "index.ts",
   "private": true,
   "dependencies": {
-    "@headlessui/react": "^2.2.9",
     "@ruasvivas/assets": "*",
     "@ruasvivas/config": "*",
-    "react-icons": "^5.5.0"
+    "@ruasvivas/lib": "*"
   },
   "peerDependencies": {
+    "@headlessui/react": "^2.2.9",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
