@@ -1,9 +1,10 @@
 "use client";
 
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Menu, MenuButton, MenuItem, MenuItems, MenuItemsProps } from "@headlessui/react";
 import { cn } from "@ruasvivas/lib";
 import { FaCogs } from "react-icons/fa";
 import { apps } from "@ruasvivas/config";
+import Logo from "./Logo";
 
 type Module = {
   title: string;
@@ -13,18 +14,27 @@ type Module = {
 
 const modules: Module[] = [
   {
+    title: "Ruas Vivas",
+    href: apps.ruasVivas,
+    icon: <Logo type="wordmark" />
+  },
+  {
     title: "Sistema",
     href: apps.sistema,
     icon: <FaCogs size={48} />,
-  }
+  },
 ];
 
-export default function PlatformDropdownMenu() {
+interface PlatformDropdownMenuProps {
+  anchor?: MenuItemsProps["anchor"];
+}
+
+export default function PlatformDropdownMenu({ anchor = "bottom" }: PlatformDropdownMenuProps) {
   if (!modules.length) return null;
 
   return (
     <Menu as="div" className="relative flex items-center text-left">
-      <MenuButton className="rounded-sm inline-flex justify-center bg-primary-light text-white hover:bg-primary">
+      <MenuButton className="rounded-sm inline-flex justify-center p-2 bg-primary-light text-white hover:bg-primary">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="size-8"
@@ -40,9 +50,9 @@ export default function PlatformDropdownMenu() {
       </MenuButton>
 
       <MenuItems
-        anchor="bottom"
+        anchor={anchor}
         className={cn(
-          "absolute mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none p-3 grid gap-3",
+          "absolute z-100 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none p-3 grid gap-3",
           { ["grid-cols-2 w-64"]: modules.length > 1 }
         )}
       >

@@ -23,10 +23,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${cinzel.variable}`}>
-      <body className="min-h-screen bg-light">
+      <body className="flex min-h-screen bg-light">
         <Header />
 
-        <div className="flex min-h-[calc(100vh_-_4rem)]">
+        <div className="flex min-h-screen">
           <AsideNavbar />
 
           <main className="flex-1 p-6 overflow-y-auto">{children}</main>

@@ -23,7 +23,7 @@ export default function AsideNavbar() {
     <aside
       className={`${
         isCollapsed ? "w-16" : "w-52"
-      } max-h-[calc(100vh_-_4rem)] bg-white shadow-md transition-all duration-300 flex flex-col`}
+      } max-h-full bg-white shadow-md transition-all duration-300 flex flex-col`}
     >
       {/* Navegação */}
       <nav className="flex-1 py-2 flex items-center flex-col gap-2 overflow-y-auto">
@@ -65,10 +65,10 @@ export default function AsideNavbar() {
         </Link>
       </nav>
 
-      {/* Botão de expandir/retrair menu */}
+      {/* Botão de expandir/recolher menu */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className={cn("w-full h-12 px-6 flex justify-center items-center rounded hover:bg-light", !isCollapsed && "justify-start")}
+        className={cn("w-full h-12 px-6 flex justify-center items-center rounded hover:bg-light", !isCollapsed && "justify-end")}
       >
         {isCollapsed ? "➡️" : "⬅️"}
       </button>

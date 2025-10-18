@@ -1,6 +1,6 @@
 {
   "name": "shell",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Aqui você encontra minhas expedições, projetos e ferramentas para enxergar o Brasil de perto.",
   "scripts": {
     "dev": "next dev --turbopack",

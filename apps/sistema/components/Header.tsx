@@ -29,7 +29,10 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <GlobalHeader>
+    <GlobalHeader
+      className="flex flex-col mx-0 h-full justify-start"
+      orientation="left"
+    >
       {/* Botão mobile para abrir nav */}
       <button
         className="lg:hidden p-2 text-gray-600 hover:text-gray-800 cursor-pointer"
@@ -39,30 +42,37 @@ export default function Header() {
         {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
       </button>
 
-      <nav className="hidden lg:flex lg:w-full lg:justify-center gap-x-6 h-8 text-dark">
-        <div className="font-medium">Bem-vindo, Ruan</div>
-        <button className="flex items-center justify-center px-3 py-1 rounded bg-secondary text-white hover:bg-secondary-dark">
-          Sair
-        </button>
+      {/* TODO: transformar em menu dropdown com hover abre ao lado, e exibe ícones quando recolhido */}
+      <nav className="hidden lg:flex lg:w-full lg:flex-col text-dark">
+        <div className="mt-auto">
+          <div className="h-12 w-full flex justify-center items-center">
+            <div className="font-medium">Bem-vindo, Ruan</div>
+          </div>
+          <div className="h-12 w-full flex justify-center items-center">
+            <button className="flex items-center justify-center px-3 py-1 rounded bg-secondary text-white hover:bg-secondary-dark">
+              Sair
+            </button>
+          </div>
+        </div>
       </nav>
 
       {/* Navegação mobile com Transition */}
       <Transition
         show={mobileOpen}
         enter="transition duration-200 ease-out"
-        enterFrom="opacity-0 -translate-y-2"
-        enterTo="opacity-100 translate-y-0"
+        enterFrom="opacity-0 -translate-x-2"
+        enterTo="opacity-100 translate-x-0"
         leave="transition duration-150 ease-in"
-        leaveFrom="opacity-100 translate-y-0"
-        leaveTo="opacity-0 -translate-y-2"
+        leaveFrom="opacity-100 translate-x-0"
+        leaveTo="opacity-0 -translate-x-2"
       >
         <div
           ref={menuRef}
-          className="absolute top-full left-0 right-0 bg-white shadow-md border-b border-light lg:hidden"
+          className="absolute z-100 top-0 w-max left-full bg-white shadow-md border-b border-light lg:hidden"
         >
-          <nav className="container px-4 ml-10">
+          <nav className="container px-4">
             <div className="h-12 w-full flex justify-center items-center">
-              <div className="h-12 w-full text-center font-medium">Bem-vindo, Ruan</div>
+              <div className="text-center font-medium">Bem-vindo, Ruan</div>
             </div>
             <div className="h-12 w-full flex justify-center items-center">
               <button className="flex items-center justify-center px-3 py-1 rounded bg-secondary text-white hover:bg-secondary-dark">
