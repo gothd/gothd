@@ -7,6 +7,9 @@
   },
   "types": "index.ts",
   "private": true,
+  "peerDependencies": {
+    "node-fetch": "^3.3.2"
+  },
   "devDependencies": {
     "typescript": "5.9.3"
   },

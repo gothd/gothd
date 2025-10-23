@@ -1,6 +1,6 @@
 // packages/lib/textUtils.ts
 export function isGreeting(text: string): boolean {
-  const greetings = ["oi", "olá", "bom dia", "boa tarde", "boa noite"];
+  const greetings = ["oi", "olá", "bom dia", "boa tarde", "boa noite", "salve"];
   return greetings.some((g) => normalizeText(text).includes(g));
 }
 
