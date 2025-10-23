@@ -20,6 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const entry = req.body.entry?.[0];
       const changes = entry?.changes?.[0];
       const value = changes?.value;
+
+      // 🚨 1. Mensagens recebidas
       const messages = value?.messages;
       const contacts = value?.contacts;
 
@@ -42,7 +44,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             } else if (keywords.includes("ruas")) {
               await botConfig.ruas_vivas(from);
             } else {
-              // 🚨 Fallback com log
               await botConfig.fallback(from, "Texto não reconhecido", msg);
             }
           }
@@ -80,10 +81,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               text: { body: "Aqui estão mais informações sobre Ruas Vivas..." },
             });
           } else {
-            // 🚨 Fallback com log para interações inválidas
             await botConfig.fallback(from, "Interação inválida", msg);
           }
         }
+      }
+
+      // 🚨 2. Status de mensagens enviadas
+      const statuses = value?.statuses;
+      if (statuses && statuses[0]) {
+        const statusEvent = statuses[0];
+        console.log("[STATUS EVENT]", {
+          id: statusEvent.id,
+          status: statusEvent.status, // sent, delivered, read, failed
+          recipient: statusEvent.recipient_id,
+          timestamp: statusEvent.timestamp,
+        });
+
+        // Aqui você pode salvar no banco ou atualizar métricas
       }
 
       return res.status(200).end();
