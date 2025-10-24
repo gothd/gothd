@@ -1,6 +1,6 @@
 const WHATSAPP_API_URL = "https://graph.facebook.com/v24.0";
 const PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID!;
-const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN!;
+const ACCESS_TOKEN = process.env.WHATSAPP_TOKEN!;
 
 /**
  * Função genérica para enviar qualquer mensagem
